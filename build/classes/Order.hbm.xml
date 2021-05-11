@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hibernate.vo.Order" table="orders">
+		<id name="id" type="long" column="idorders">
+			<generator class="increment" />
+		</id>
+		<many-to-one name="account" class="com.hibernate.vo.Account" lazy="false">
+            <column name="accountid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="status" class="com.hibernate.vo.Status" lazy="false">
+            <column name="idstatus" not-null="true" />
+        </many-to-one>
+		<property name="Date" type="java.util.Date" column="Date" />
+		<property name="Adress" type="string" column="Adress" />
+		<bag name="tovars" table="Orderlist" lazy="false">
+			<key column="orderid" />
+			<many-to-many column="tovarid" class="com.hibernate.vo.Tovar" />
+		</bag>
+	</class>
+</hibernate-mapping>

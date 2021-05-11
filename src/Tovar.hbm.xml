@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hibernate.vo.Tovar" table="tovar">
+		<id name="ID" type="long" column="idTovar">
+			<generator class="increment" />
+		</id>
+		<property name="Name" type="string" column="Name" />
+		<property name="price" type="int" column="Price" />
+		<property name="RAM" type="int" column="RAM" />
+		<property name="HDD" type="int" column="HDD" />
+		<property name="CoresCount" type="int" column="CoresCount" />
+		<many-to-one name="pctype" class="com.hibernate.vo.PCType" lazy="false">
+            <column name="pctypeid" not-null="true" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>
